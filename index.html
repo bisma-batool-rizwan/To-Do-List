@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TaskFlow</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+
+<!-- NAVBAR -->
+
+
+<nav class="navbar">
+
+
+<div class="logo">
+
+<i class="fa-solid fa-list-check"></i>
+
+<span>TaskFlow</span>
+
+</div>
+
+
+
+
+<div class="search-box">
+
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+
+<input 
+type="text"
+id="searchInput"
+placeholder="Search tasks...">
+
+
+</div>
+
+
+<div class="nav-right">
+
+
+<button class="icon-btn" id="themeBtn">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+
+<div class="notification-box">
+
+<button class="icon-btn" id="notificationBtn">
+
+<i class="fa-regular fa-bell"></i>
+
+</button>
+
+
+<div class="notification-panel" id="notificationPanel">
+
+
+<h3>Notifications</h3>
+
+
+<p id="notificationText">
+No new notifications
+</p>
+
+
+</div>
+
+</div>
+
+
+<div class="profile-box">
+
+<div class="profile" id="profileBtn">
+
+<img src="https://ui-avatars.com/api/?name=Bisma&background=6366F1&color=fff">
+
+</div>
+
+
+<div class="profile-menu" id="profileMenu">
+
+<h3>Bisma</h3>
+
+<p>TaskFlow User</p>
+
+<hr>
+
+
+<button id="profileOption">
+
+<i class="fa-solid fa-user"></i>
+
+Profile
+
+</button>
+
+
+<button id="settingsBtn">
+
+<i class="fa-solid fa-gear"></i>
+
+Settings
+
+</button>
+
+<button id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</nav>
+<!-- HERO SECTION -->
+
+
+<section class="hero">
+
+
+
+<div class="hero-left">
+
+
+
+<p class="greeting">
+
+👋 Welcome Back
+
+</p>
+
+
+
+<h1>
+
+Stay Organized.<br>
+
+Stay Productive.
+
+</h1>
+
+
+
+
+<p class="hero-text">
+
+Manage your daily tasks efficiently with TaskFlow.
+Plan smarter, work faster, and accomplish more.
+
+</p>
+
+
+
+
+
+<button 
+class="add-task-btn"
+onclick="scrollToForm()">
+
+
+<i class="fa-solid fa-plus"></i>
+
+Add New Task
+
+
+</button>
+
+</div>
+
+
+<div class="hero-right">
+
+
+<div class="date-card">
+
+
+<p>
+
+Today's Date
+
+</p>
+
+<h2 id="todayDate">
+
+</h2>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- STATS SECTION -->
+
+
+<section class="stats">
+
+<div class="stat-card">
+
+
+<div class="stat-icon blue">
+
+<i class="fa-solid fa-list"></i>
+
+</div>
+
+
+
+<div>
+
+<h2 id="totalTasks">
+0
+</h2>
+
+
+<p>
+Total Tasks
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon green">
+
+<i class="fa-solid fa-check"></i>
+
+</div>
+
+
+<div>
+
+<h2 id="completedTasks">
+0
+</h2>
+
+
+<p>
+Completed
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon orange">
+
+<i class="fa-solid fa-clock"></i>
+
+</div>
+
+
+
+<div>
+
+<h2 id="pendingTasks">
+0
+</h2>
+
+
+<p>
+Pending
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon purple">
+
+<i class="fa-solid fa-chart-line"></i>
+
+</div>
+
+
+
+<div>
+
+<h2>
+
+<span id="progress">
+0
+</span>%
+
+
+</h2>
+
+
+<p>
+Progress
+</p>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TASK FORM SECTION -->
+
+
+<section class="task-section" id="taskForm">
+
+
+
+<div class="section-header">
+
+
+<h2>
+Create New Task
+</h2>
+
+
+<p>
+Add your tasks and manage your day.
+</p>
+
+
+</div>
+
+
+<div class="task-form">
+
+<div class="input-group">
+
+
+<label>
+Task Title
+</label>
+
+
+<input 
+type="text"
+id="taskTitle"
+placeholder="Enter task name">
+
+
+</div>
+
+
+<div class="input-group">
+
+
+<label>
+Description
+</label>
+
+
+<textarea 
+id="taskDescription"
+placeholder="Describe your task">
+</textarea>
+
+
+</div>
+
+
+<div class="form-row">
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Category
+</label>
+
+
+<select id="taskCategory">
+
+
+<option value="Study">
+Study
+</option>
+
+
+<option value="Work">
+Work
+</option>
+
+
+<option value="Personal">
+Personal
+</option>
+
+
+<option value="Shopping">
+Shopping
+</option>
+
+
+<option value="Health">
+Health
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+<div class="input-group">
+
+
+<label>
+Priority
+</label>
+
+
+<select id="taskPriority">
+
+
+<option value="High">
+High
+</option>
+
+
+<option value="Medium">
+Medium
+</option>
+
+
+<option value="Low">
+Low
+</option>
+
+
+</select>
+
+
+</div>
+
+
+<div class="input-group">
+
+
+<label>
+Due Date
+</label>
+
+
+<input 
+type="date"
+id="taskDate">
+
+
+</div>
+
+</div>
+
+
+<button 
+class="create-btn"
+id="createTask">
+
+
+<i class="fa-solid fa-plus"></i>
+
+
+Create Task
+
+
+</button>
+
+</div>
+
+
+</section>
+
+
+// TASK LIST SECTION START
+
+
+<section class="task-list-section">
+
+
+
+<div class="section-header">
+
+
+<h2>
+Your Tasks
+</h2>
+
+
+<p>
+Track and manage your daily activities.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- FILTERS-->
+
+
+<div class="filters">
+
+<div class="filter-search">
+
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+
+<input 
+type="text"
+id="searchTasks"
+placeholder="Search tasks...">
+
+
+</div>
+
+<select id="categoryFilter">
+
+
+<option value="All">
+All Categories
+</option>
+
+
+<option value="Study">
+Study
+</option>
+
+
+<option value="Work">
+Work
+</option>
+
+
+<option value="Personal">
+Personal
+</option>
+
+
+<option value="Shopping">
+Shopping
+</option>
+
+
+<option value="Health">
+Health
+</option>
+
+
+</select>
+
+
+<select id="priorityFilter">
+
+
+<option value="All">
+All Priority
+</option>
+
+
+<option value="High">
+High
+</option>
+
+
+<option value="Medium">
+Medium
+</option>
+
+
+<option value="Low">
+Low
+</option>
+
+
+</select>
+
+<select id="statusFilter">
+
+
+<option value="All">
+All Tasks
+</option>
+
+
+<option value="Completed">
+Completed
+</option>
+
+
+<option value="Pending">
+Pending
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+<!-- TASK CARDS WILL APPEAR HERE -->
+
+
+<div 
+class="task-container"
+id="taskContainer">
+
+
+</div>
+
+
+</section>
+
+
+<!-- SETTINGS PANEL-->
+
+
+<div class="settings-panel" id="settingsPanel">
+
+
+
+<div class="settings-header">
+
+
+<h3>
+Settings
+</h3>
+
+
+<button id="closeSettings">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+
+</div>
+
+
+<div class="setting-item">
+
+
+<span>
+
+<i class="fa-solid fa-moon"></i>
+
+Dark Mode
+
+</span>
+
+
+<label class="switch">
+
+
+<input 
+type="checkbox"
+id="darkToggle">
+
+
+<span class="slider"></span>
+
+
+</label>
+
+
+
+</div>
+
+
+<div class="setting-item">
+
+
+<span>
+
+<i class="fa-solid fa-bell"></i>
+
+Notifications
+
+</span>
+
+
+<label class="switch">
+
+
+<input 
+type="checkbox"
+id="notificationToggle"
+checked>
+
+
+<span class="slider"></span>
+
+
+</label>
+
+
+
+</div>
+
+</div>
+
+<!-- TOAST MESSAGE -->
+
+
+<div id="toast">
+
+</div>
+
+
+
+<footer class="footer">
+
+
+<p>
+
+© 2026 TaskFlow. All Rights Reserved.
+
+</p>
+
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+
+</html>
